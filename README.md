@@ -3,6 +3,7 @@
 A Terraform module which creates Workspace on Terraform Cloud / Enterprise with the following characteristics:
 - Ability to configure all kind of Variables (HCL, Non HCL, Sensitive, Non Sensitive, Terraform or ENV)
 - Allow to enable or not notification at the workspace level
+- Allow you to enable or not vcs connection at the workspace level
 
 ## Terraform versions
 
@@ -10,9 +11,7 @@ Supports Terraform 0.14 only.
 
 ## Usage
 
-Use toggle **vcs** to connect workspace to your vcs  
-
-Workspace **without** notification and **without** vcs example: 
+Workspace **without** notification and vcs example: 
 
 ```hcl
 
@@ -34,10 +33,6 @@ module "my_workspace_1" {
         "working_directory"     = ""
         "tf_version"            = "0.12.26"
         "queue_all_runs"        = false
-        "identifier"            = "mygithub/myrepos"
-        "branch"                = ""
-        "ingress_submodules"    = false
-        "oauth_token_id"        = "ot-12hhhzypoazoia771"
     }
   ]
   workspace_variables           = [
@@ -58,12 +53,15 @@ module "my_workspace_1" {
 
 ```
 
-Workspace **with** notification and **with** vcs example: 
+Workspace **with** notification and vcs example: 
 
 ```hcl
 module "my_workspace_1" {
   source                        = "app.terraform.io/<ORG_NAME>/workspace/terraform"
   version                       = "1.0.0"
+
+  vcs = true
+
   workspace                     = [
     {
         "name"                  = "test1"
