@@ -6,17 +6,22 @@ A Terraform module which creates Workspace on Terraform Cloud / Enterprise with 
 
 ## Terraform versions
 
-Support of Terraform 0.12 only.
+Supports Terraform 0.14 only.
 
 ## Usage
 
-Workspace **without** notification example: 
+Use toggle **vcs** to connect workspace to your vcs  
+
+Workspace **without** notification and **without** vcs example: 
 
 ```hcl
 
 module "my_workspace_1" {
   source                        = "app.terraform.io/<ORG_NAME>/workspace/terraform"
   version                       = "1.0.0"
+
+  vcs = false
+
   workspace                     = [
     {
         "name"                  = "test1"
@@ -45,11 +50,15 @@ module "my_workspace_1" {
     } 
   ]
 
-  notification                  = false
+  notification_configuration = [
+    {
+      notification = false
+    }
+  ]
 
 ```
 
-Workspace **with** notification example: 
+Workspace **with** notification and **with** vcs example: 
 
 ```hcl
 module "my_workspace_1" {
@@ -103,6 +112,7 @@ module "my_workspace_1" {
 ## Authors
 
 * **Nicolas Ehrman** - *Initial work* - [Hashicorp](https://www.hashicorp.com)
+* **Emil Engfors** - *updated with VCS toggle*
 
 
 
