@@ -7,7 +7,7 @@ A Terraform module which creates Workspace on Terraform Cloud / Enterprise with 
 
 ## Terraform versions
 
-Supports Terraform 0.14 only.
+Tested with Terraform 0.14.7.
 
 ## Usage
 
@@ -31,7 +31,7 @@ module "my_workspace_1" {
         "ssh_key_id"            = ""
         "trigger_prefixes"      = "[]"
         "working_directory"     = ""
-        "tf_version"            = "0.12.26"
+        "tf_version"            = "0.14.7"
         "queue_all_runs"        = false
     }
   ]
@@ -72,7 +72,7 @@ module "my_workspace_1" {
         "ssh_key_id"            = ""
         "trigger_prefixes"      = "[]"
         "working_directory"     = ""
-        "tf_version"            = "0.12.26"
+        "tf_version"            = "0.14.7"
         "queue_all_runs"        = false
         "identifier"            = "mygithub/myrepos"
         "branch"                = ""
