@@ -18,3 +18,9 @@ variable "notification_configuration" {
   description = "Defines the configuration of the notification"
   type        = list(map(string))
 }
+
+variable "vcs" {
+  description = "Defines if vcs are enabled or not"
+  type        = bool
+  default     = false
+}
